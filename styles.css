@@ -87,6 +87,13 @@ body::before {
   font-size: 0.95rem;
 }
 
+.hero-topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
 .hero-copy h1 {
   max-width: 14ch;
   font-size: clamp(2.4rem, 4.5vw, 3.6rem);
@@ -266,6 +273,32 @@ button {
   background: rgba(255, 255, 255, 0.6);
 }
 
+.lang-switch {
+  display: inline-flex;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid rgba(28, 22, 15, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.lang-button {
+  border: 0;
+  border-radius: 999px;
+  min-width: 52px;
+  padding: 10px 12px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.lang-button.active {
+  background: var(--text);
+  color: #fff;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -281,6 +314,233 @@ button {
   background: rgba(255, 255, 255, 0.62);
   padding: 6px 14px 14px;
   align-self: start;
+}
+
+.uzum-shell {
+  grid-column: 1 / -1;
+}
+
+.uzum-toggle-card {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.uzum-toggle-card {
+  padding: 14px 16px 16px;
+}
+
+.uzum-toggle-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+}
+
+.uzum-brandline {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.uzum-logo {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(28, 22, 15, 0.08);
+  overflow: hidden;
+}
+
+.uzum-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.uzum-toggle-copy strong {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.2;
+}
+
+.uzum-toggle-copy p,
+.uzum-note {
+  margin: 4px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.88rem;
+}
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  min-height: auto;
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+  flex: 0 0 auto;
+}
+
+.switch input,
+.toggle-row input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switch-label {
+  font-weight: 800;
+  font-size: 0.86rem;
+}
+
+.switch-track {
+  position: relative;
+  display: inline-flex;
+  width: 48px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(28, 22, 15, 0.14);
+  transition: background 180ms ease;
+}
+
+.switch-track::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(28, 22, 15, 0.18);
+  transition: transform 180ms ease;
+}
+
+.switch input:checked + .switch-track {
+  background: linear-gradient(135deg, #6d1fff, #8f32ff);
+}
+
+.switch input:checked + .switch-track::after {
+  transform: translateX(20px);
+}
+
+.uzum-fields {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(28, 22, 15, 0.08);
+}
+
+.uzum-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.toggle-label {
+  min-height: 118px;
+}
+
+.toggle-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  padding-left: 54px;
+}
+
+.toggle-row::before {
+  content: "";
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(28, 22, 15, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(28, 22, 15, 0.04);
+  transition: background 180ms ease;
+}
+
+.toggle-row::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 5px 12px rgba(28, 22, 15, 0.16);
+  transform: translate(3px, 0);
+  transition: transform 180ms ease;
+}
+
+.toggle-label.is-active .toggle-row::before {
+  background: linear-gradient(135deg, #6d1fff, #8f32ff);
+}
+
+.toggle-label.is-active .toggle-row::after {
+  transform: translate(21px, 0);
+}
+
+.toggle-row span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.uzum-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.uzum-meta-card {
+  min-height: 96px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(244, 239, 228, 0.76);
+  border: 1px solid rgba(28, 22, 15, 0.08);
+}
+
+.uzum-meta-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.uzum-meta-card strong {
+  display: block;
+  margin-top: 8px;
+  line-height: 1.45;
+}
+
+.status-badge,
+.breakdown-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: rgba(109, 31, 255, 0.12);
+  color: #5d1bd6;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.uzum-note {
+  margin-bottom: 0;
+}
+
+.is-hidden {
+  display: none !important;
 }
 
 .advanced-settings summary {
@@ -398,6 +658,12 @@ select:focus {
   border: 1px solid var(--line);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.78);
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
 }
 
 .price-card p {
@@ -405,9 +671,56 @@ select:focus {
   color: var(--muted);
 }
 
+.price-card:hover,
+.price-card:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(191, 90, 43, 0.22);
+  box-shadow: 0 12px 28px rgba(70, 49, 30, 0.08);
+  outline: none;
+}
+
 .price-card.featured {
   background: linear-gradient(135deg, rgba(191, 90, 43, 0.15), rgba(191, 90, 43, 0.05));
   border-color: rgba(191, 90, 43, 0.2);
+}
+
+.price-card.selected {
+  border-color: rgba(109, 31, 255, 0.42);
+  background: linear-gradient(135deg, rgba(109, 31, 255, 0.14), rgba(109, 31, 255, 0.05));
+  box-shadow: 0 16px 32px rgba(109, 31, 255, 0.12);
+}
+
+.price-card-input {
+  margin-top: 10px;
+}
+
+#priceCardCustom .price-inline-input {
+  margin-top: 6px;
+  width: 100%;
+}
+
+.price-inline-label {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.price-inline-input {
+  margin-top: 6px;
+  padding: 10px 12px;
+  border-radius: 14px;
+}
+
+.price-card-meta {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
 }
 
 .breakdown,
@@ -420,6 +733,13 @@ select:focus {
 
 .breakdown {
   margin-bottom: 18px;
+}
+
+.breakdown-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
 }
 
 .allocation-card {
@@ -655,6 +975,10 @@ select:focus {
   .allocation-card {
     grid-template-columns: 1fr;
   }
+
+  .uzum-meta {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
@@ -689,6 +1013,7 @@ select:focus {
   }
 
   .form-grid,
+  .uzum-grid,
   .advanced-grid,
   .price-cards,
   .breakdown-grid {
@@ -697,5 +1022,13 @@ select:focus {
 
   .panel-heading {
     flex-direction: column;
+  }
+
+  .uzum-toggle-card,
+  .hero-topbar,
+  .breakdown-head,
+  .uzum-toggle-head {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

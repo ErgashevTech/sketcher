@@ -20,39 +20,45 @@
     <div class="page-shell">
       <header class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">O'zbekiston uchun</p>
-          <h1>3D print narx kalkulyatori</h1>
-          <p class="hero-mini">
+          <div class="hero-topbar">
+            <p class="eyebrow" id="heroEyebrow">O'zbekiston uchun</p>
+            <div class="lang-switch" aria-label="Language switch">
+              <button class="lang-button active" id="langUz" type="button">O'z</button>
+              <button class="lang-button" id="langRu" type="button">RU</button>
+            </div>
+          </div>
+          <h1 id="heroTitle">3D print narx kalkulyatori</h1>
+          <p class="hero-mini" id="heroMini">
             UZS, mahalliy elektr tarifi, ish haqi va printer amortizatsiyasi bilan
           </p>
           <div class="hero-pills">
-            <span>FDM uchun tayyor</span>
-            <span>UZS format</span>
-            <span>Barcha konstantalar tahrirlanadi</span>
+            <span id="heroPill1">FDM uchun tayyor</span>
+            <span id="heroPill2">UZS format</span>
+            <span id="heroPill3">Barcha konstantalar tahrirlanadi</span>
           </div>
         </div>
 
         <aside class="hero-note">
-          <h2>Standart presetlar</h2>
+          <h2 id="presetTitle">Standart presetlar</h2>
           <div class="preset-list">
             <div class="preset-item">
-              <span>PLA filament</span>
+              <span id="presetLabel1">PLA filament</span>
               <strong>190 000 so'm / kg</strong>
             </div>
             <div class="preset-item">
-              <span>Uy elektr tarifi</span>
+              <span id="presetLabel2">Uy elektr tarifi</span>
               <strong>650 so'm / kWh</strong>
             </div>
             <div class="preset-item">
-              <span>Ish haqi bazasi</span>
+              <span id="presetLabel3">Ish haqi bazasi</span>
               <strong>42 209 so'm / soat</strong>
             </div>
             <div class="preset-item">
-              <span>Nosozlik riski</span>
+              <span id="presetLabel4">Nosozlik riski</span>
               <strong>8%</strong>
             </div>
           </div>
-          <p>
+          <p id="presetNote">
             Qiymatlar boshlang'ich nuqta sifatida berilgan. O'zingizning real
             xarajatingizga qarab darhol o'zgartiring.
           </p>
@@ -63,22 +69,22 @@
         <section class="panel form-panel">
           <div class="panel-heading">
             <div>
-              <p class="section-kicker">Kalkulyator</p>
-              <h2>Loyiha parametrlari</h2>
+              <p class="section-kicker" id="calculatorKicker">Kalkulyator</p>
+              <h2 id="calculatorTitle">Loyiha parametrlari</h2>
             </div>
             <button class="ghost-button" id="reset-defaults" type="button">
-              Standart qiymatlar
+              <span id="resetButtonText">Standart qiymatlar</span>
             </button>
           </div>
 
           <form id="calculator-form" class="form-grid">
             <label>
-              Buyurtma nomi
+              <span class="field-label" id="labelJobName">Buyurtma nomi</span>
               <input id="jobName" type="text" value="Telefon stendi" />
             </label>
 
             <label>
-              Material
+              <span class="field-label" id="labelMaterialType">Material</span>
               <select id="materialType">
                 <option value="pla">PLA</option>
                 <option value="petg">PETG</option>
@@ -88,12 +94,12 @@
             </label>
 
             <label>
-              Soni
+              <span class="field-label" id="labelQuantity">Soni</span>
               <input id="quantity" type="number" min="1" step="1" value="1" />
             </label>
 
             <label>
-              Filament narxi / kg
+              <span class="field-label" id="labelMaterialCostPerKg">Filament narxi / kg</span>
               <input
                 id="materialCostPerKg"
                 type="number"
@@ -104,90 +110,201 @@
             </label>
 
             <label>
-              Bir dona vazni (gramm)
+              <span class="field-label" id="labelWeightGrams">Bir dona vazni (gramm)</span>
               <input id="weightGrams" type="number" min="0" step="0.1" value="72" />
             </label>
 
             <label>
-              Support va chiqindi zaxirasi (%)
+              <span class="field-label" id="labelWastePercent">Support va chiqindi zaxirasi (%)</span>
               <input id="wastePercent" type="number" min="0" step="1" value="7" />
             </label>
 
             <label>
-              Print vaqti (soat)
+              <span class="field-label" id="labelPrintHours">Print vaqti (soat)</span>
               <input id="printHours" type="number" min="0" step="1" value="5" />
             </label>
 
             <label>
-              Print vaqti (daqiqа)
+              <span class="field-label" id="labelPrintMinutes">Print vaqti (daqiqa)</span>
               <input id="printMinutes" type="number" min="0" max="59" step="1" value="40" />
             </label>
 
             <label>
-              Tayyorlash va ishlov berish (daqiqа)
+              <span class="field-label" id="labelLaborMinutes">Tayyorlash va ishlov berish (daqiqa)</span>
               <input id="laborMinutes" type="number" min="0" step="1" value="25" />
             </label>
 
             <label>
-              Qo'shimcha detal xarajati / dona
+              <span class="field-label" id="labelHardwareCost">Qo'shimcha detal xarajati / dona</span>
               <input id="hardwareCost" type="number" min="0" step="100" value="0" />
             </label>
 
             <label>
-              Qadoqlash xarajati / dona
+              <span class="field-label" id="labelPackagingCost">Qadoqlash xarajati / dona</span>
               <input id="packagingCost" type="number" min="0" step="100" value="5000" />
             </label>
 
-            <label>
-              Foyda foizi (%)
-              <input id="customMargin" type="number" min="0" step="1" value="35" />
-            </label>
+            <section class="uzum-shell" id="uzumShell">
+              <div class="uzum-toggle-card">
+                <div class="uzum-toggle-head">
+                  <div class="uzum-toggle-copy">
+                    <div class="uzum-brandline">
+                      <span class="uzum-logo" aria-hidden="true">
+                        <img src="./uzumlogo.png" alt="" />
+                      </span>
+                      <div>
+                        <strong id="uzumToggleTitle">Uzum Market uchun hisoblash</strong>
+                        <p id="uzumToggleSubtitle">
+                          Komissiya, logistika va FBO saqlash xarajatini narxga qo'shing
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <label class="switch" for="useUzum">
+                    <span class="switch-label" id="uzumSwitchLabel">Yoqish</span>
+                    <input id="useUzum" type="checkbox" />
+                    <span class="switch-track" aria-hidden="true"></span>
+                  </label>
+                </div>
+
+                <div class="uzum-fields" id="uzumFields" hidden>
+                  <div class="uzum-grid">
+                    <label>
+                      <span class="field-label" id="labelUzumModel">Savdo modeli</span>
+                      <select id="uzumModel">
+                        <option value="fbo">FBO</option>
+                        <option value="fbs">FBS</option>
+                        <option value="dbs">DBS</option>
+                      </select>
+                    </label>
+
+                    <label>
+                      <span class="field-label" id="labelUzumLevel1">Kategoriya 1</span>
+                      <select id="uzumLevel1"></select>
+                    </label>
+
+                    <label id="uzumLevel2Wrap">
+                      <span class="field-label" id="labelUzumLevel2">Kategoriya 2</span>
+                      <select id="uzumLevel2"></select>
+                    </label>
+
+                    <label id="uzumLevel3Wrap">
+                      <span class="field-label" id="labelUzumLevel3">Kategoriya 3</span>
+                      <select id="uzumLevel3"></select>
+                    </label>
+
+                    <label id="uzumLevel4Wrap">
+                      <span class="field-label" id="labelUzumLevel4">Kategoriya 4</span>
+                      <select id="uzumLevel4"></select>
+                    </label>
+
+                    <label id="uzumLevel5Wrap">
+                      <span class="field-label" id="labelUzumLevel5">Kategoriya 5</span>
+                      <select id="uzumLevel5"></select>
+                    </label>
+
+                    <label id="uzumLevel6Wrap">
+                      <span class="field-label" id="labelUzumLevel6">Kategoriya 6</span>
+                      <select id="uzumLevel6"></select>
+                    </label>
+
+                    <label>
+                      <span class="field-label" id="labelUzumLength">Qadoq uzunligi (mm)</span>
+                      <input id="uzumLength" type="number" min="1" step="1" value="210" />
+                    </label>
+
+                    <label>
+                      <span class="field-label" id="labelUzumWidth">Qadoq kengligi (mm)</span>
+                      <input id="uzumWidth" type="number" min="1" step="1" value="210" />
+                    </label>
+
+                    <label>
+                      <span class="field-label" id="labelUzumHeight">Qadoq balandligi (mm)</span>
+                      <input id="uzumHeight" type="number" min="1" step="1" value="70" />
+                    </label>
+
+                    <label class="toggle-label" id="storageToggleWrap">
+                      <span class="field-label" id="labelIncludeStorage">FBO saqlashni qo'shish</span>
+                      <div class="toggle-row">
+                        <input id="includeStorage" type="checkbox" />
+                        <span id="storageToggleNote">Aylanuvchanlik kiritilganda hisoblanadi</span>
+                      </div>
+                    </label>
+
+                    <label id="turnoverWrap">
+                      <span class="field-label" id="labelTurnoverDays">Aylanuvchanlik (kun)</span>
+                      <input id="turnoverDays" type="number" min="0" step="1" value="90" />
+                    </label>
+                  </div>
+
+                  <div class="uzum-meta">
+                    <div class="uzum-meta-card">
+                      <span id="volumeLabel">Hajm</span>
+                      <strong id="volumeOutput">0 l</strong>
+                    </div>
+                    <div class="uzum-meta-card">
+                      <span id="categoryBreadcrumbLabel">Tanlangan kategoriya</span>
+                      <strong id="categoryBreadcrumb">-</strong>
+                    </div>
+                    <div class="uzum-meta-card" id="tariffBadgeWrap" hidden>
+                      <span id="tariffBadgeLabel">Tarif turi</span>
+                      <strong class="status-badge" id="tariffBadge">Maxsus tarif</strong>
+                    </div>
+                  </div>
+
+                  <p class="uzum-note" id="uzumStatusText">
+                    Kategoriya va model tanlang, keyin Uzum xarajatlari avtomatik qo'shiladi.
+                  </p>
+                </div>
+              </div>
+            </section>
 
             <details class="advanced-settings">
-              <summary>Kengaytirilgan sozlamalar</summary>
+              <summary id="advancedSummary">Kengaytirilgan sozlamalar</summary>
               <div class="advanced-grid">
                 <label>
-                  Ish haqi / soat
+                  <span class="field-label" id="labelLaborRateHourly">Ish haqi / soat</span>
                   <input id="laborRateHourly" type="number" min="0" step="1000" value="42209" />
                 </label>
 
                 <label>
-                  Printer quvvati (W)
+                  <span class="field-label" id="labelPowerWatts">Printer quvvati (W)</span>
                   <input id="powerWatts" type="number" min="0" step="1" value="220" />
                 </label>
 
                 <label>
-                  Elektr narxi / kWh
+                  <span class="field-label" id="labelElectricityRate">Elektr narxi / kWh</span>
                   <input id="electricityRate" type="number" min="0" step="10" value="650" />
                 </label>
 
                 <label>
-                  Printer narxi
+                  <span class="field-label" id="labelPrinterPrice">Printer narxi</span>
                   <input id="printerPrice" type="number" min="0" step="10000" value="4500000" />
                 </label>
 
                 <label>
-                  Printer xizmat muddati (soat)
+                  <span class="field-label" id="labelPrinterLifespanHours">Printer xizmat muddati (soat)</span>
                   <input id="printerLifespanHours" type="number" min="1" step="100" value="6000" />
                 </label>
 
                 <label>
-                  Servis va sarf / soat
+                  <span class="field-label" id="labelMaintenancePerHour">Servis va sarf / soat</span>
                   <input id="maintenancePerHour" type="number" min="0" step="100" value="2500" />
                 </label>
 
                 <label>
-                  Nosoz print riski (%)
+                  <span class="field-label" id="labelFailureRate">Nosoz print riski (%)</span>
                   <input id="failureRate" type="number" min="0" step="1" value="8" />
                 </label>
 
                 <label>
-                  Qo'shimcha xarajatlar (%)
+                  <span class="field-label" id="labelOverheadPercent">Qo'shimcha xarajatlar (%)</span>
                   <input id="overheadPercent" type="number" min="0" step="1" value="10" />
                 </label>
 
                 <label>
-                  Soliq / QQS (%)
+                  <span class="field-label" id="labelTaxPercent">Soliq / QQS (%)</span>
                   <input id="taxPercent" type="number" min="0" step="1" value="12" />
                 </label>
               </div>
@@ -198,74 +315,88 @@
         <section class="panel results-panel">
           <div class="panel-heading">
             <div>
-              <p class="section-kicker">Natija</p>
-              <h2>Narx tavsiyalari</h2>
+              <p class="section-kicker" id="resultsKicker">Natija</p>
+              <h2 id="resultsTitle">Narx tavsiyalari</h2>
             </div>
           </div>
 
           <div class="summary-card">
             <div>
-              <p class="summary-label">1 dona to'liq tannarx</p>
+              <p class="summary-label" id="summaryLabelUnitCost">1 dona to'liq tannarx</p>
               <strong id="unitCost">0 so'm</strong>
             </div>
             <div>
-              <p class="summary-label">Buyurtma umumiy tannarx</p>
+              <p class="summary-label" id="summaryLabelTotalCost">Buyurtma umumiy tannarx</p>
               <strong id="totalCost">0 so'm</strong>
             </div>
             <div>
-              <p class="summary-label">1 dona VAT bilan</p>
+              <p class="summary-label" id="summaryLabelUnitWithTax">1 dona VAT bilan</p>
               <strong id="unitWithTax">0 so'm</strong>
             </div>
           </div>
 
           <div class="price-cards">
-            <article class="price-card">
-              <p>Tez sotish</p>
+            <article class="price-card" id="priceCardLean" data-tier="lean" tabindex="0" role="button" aria-pressed="false">
+              <p id="priceLeanTitle">Tez sotish</p>
               <strong id="priceLean">0 so'm</strong>
-              <span>20% foyda</span>
+              <span id="priceLeanLabel">20% foyda</span>
             </article>
-            <article class="price-card featured">
-              <p>Standart narx</p>
+            <article class="price-card featured selected" id="priceCardStandard" data-tier="standard" tabindex="0" role="button" aria-pressed="true">
+              <p id="priceStandardTitle">Standart narx</p>
               <strong id="priceStandard">0 so'm</strong>
-              <span>35% foyda</span>
+              <span id="priceStandardLabel">35% foyda</span>
             </article>
-            <article class="price-card">
-              <p>Biznes zaxira</p>
+            <article class="price-card" id="priceCardPremium" data-tier="premium" tabindex="0" role="button" aria-pressed="false">
+              <p id="pricePremiumTitle">Biznes zaxira</p>
               <strong id="pricePremium">0 so'm</strong>
-              <span>50% foyda</span>
+              <span id="pricePremiumLabel">50% foyda</span>
             </article>
-            <article class="price-card">
-              <p>O'zingizniki</p>
-              <strong id="priceCustom">0 so'm</strong>
-              <span id="priceCustomLabel">35% foyda</span>
+            <article class="price-card" id="priceCardCustom" data-tier="custom" tabindex="0" role="button" aria-pressed="false">
+              <p id="priceCustomTitle">O'zingizniki</p>
+              <input
+                id="customSellingPrice"
+                class="price-inline-input"
+                type="number"
+                min="0"
+                step="100"
+                placeholder="Masalan 120000"
+                aria-labelledby="priceCustomTitle"
+              />
+              <span id="priceCustomLabel"></span>
             </article>
           </div>
 
           <div class="breakdown">
-            <h3>Xarajat tarkibi</h3>
+            <div class="breakdown-head">
+              <h3 id="breakdownTitle">Xarajat tarkibi</h3>
+              <span class="breakdown-chip" id="breakdownModeChip">Ishlab chiqarish tannarxi</span>
+            </div>
             <div class="allocation-card">
               <div class="allocation-chart-wrap">
                 <div class="allocation-chart" id="allocationChart">
                   <div class="allocation-center">
                     <strong id="allocationTotal">0 so'm</strong>
-                    <span>jami tannarx</span>
+                    <span id="allocationTotalLabel">jami tannarx</span>
                   </div>
                 </div>
               </div>
               <div class="allocation-legend" id="allocationLegend"></div>
             </div>
             <div class="breakdown-grid">
-              <div><span>Material</span><strong id="materialBreakdown">0 so'm</strong></div>
-              <div><span>Mehnat</span><strong id="laborBreakdown">0 so'm</strong></div>
-              <div><span>Detal</span><strong id="hardwareBreakdown">0 so'm</strong></div>
-              <div><span>Qadoqlash</span><strong id="packagingBreakdown">0 so'm</strong></div>
-              <div><span>Printer</span><strong id="machineBreakdown">0 so'm</strong></div>
-              <div><span>Jami</span><strong id="summaryBreakdown">0 so'm</strong></div>
+              <div><span id="breakdownMaterialLabel">Material</span><strong id="materialBreakdown">0 so'm</strong></div>
+              <div><span id="breakdownLaborLabel">Mehnat</span><strong id="laborBreakdown">0 so'm</strong></div>
+              <div><span id="breakdownHardwareLabel">Detal</span><strong id="hardwareBreakdown">0 so'm</strong></div>
+              <div><span id="breakdownPackagingLabel">Qadoqlash</span><strong id="packagingBreakdown">0 so'm</strong></div>
+              <div><span id="breakdownMachineLabel">Printer</span><strong id="machineBreakdown">0 so'm</strong></div>
+              <div><span id="breakdownLogisticsLabel">Logistika</span><strong id="logisticsBreakdown">0 so'm</strong></div>
+              <div><span id="breakdownStorageLabel">Saqlash</span><strong id="storageBreakdown">0 so'm</strong></div>
+              <div><span id="breakdownCommissionLabel">Komissiya</span><strong id="commissionBreakdown">0 so'm</strong></div>
+              <div><span id="breakdownSummaryLabel">Jami</span><strong id="summaryBreakdown">0 so'm</strong></div>
             </div>
           </div>
 
           <div class="formula-box">
-            <h3>Formula</h3>
+            <h3 id="formulaTitle">Formula</h3>
             <p id="formulaLine">
               Tannarx = material + elektr + amortizatsiya + servis + mehnat +
               detal + qadoqlash + risk + qo'shimcha xarajatlar
@@ -275,7 +406,7 @@
       </main>
 
       <footer class="sources-strip">
-        <p>
+        <p id="sourcesNote">
           Preset manbalari: elektr tarifi 2026-yil 1-iyundan boshlab aholi uchun
           650 so'm/kWh; o'rtacha oylik ish haqi 2026-yil yanvar-iyunda 7 091 100
           so'm. Filament narxi esa mahalliy marketplace listinglaridan olingan taxminiy
@@ -286,6 +417,7 @@
             href="https://gov.uz/oz/minenergy/news/view/165918"
             target="_blank"
             rel="noreferrer"
+            id="sourceLinkElectricity"
           >
             Elektr tarifi manbasi
           </a>
@@ -293,6 +425,7 @@
             href="https://stat.uz/uz/matbuot-markazi/qo-mita-yangiliklar/69378-o-zbekiston-respublikasida-o-rtacha-oylik-nominal-hisoblangan-ish-haqi-25-07-2026"
             target="_blank"
             rel="noreferrer"
+            id="sourceLinkSalary"
           >
             Ish haqi manbasi
           </a>
@@ -300,6 +433,7 @@
             href="https://www.olx.uz/dom-i-sad/hozyaystvennyy-inventar/tashkent/q-pla-filament/"
             target="_blank"
             rel="noreferrer"
+            id="sourceLinkMarket"
           >
             Filament bozor narxlari
           </a>
@@ -307,6 +441,7 @@
             href="https://glotr.uz/uz/pla-filament-175mm-p-163983/"
             target="_blank"
             rel="noreferrer"
+            id="sourceLinkPla"
           >
             PLA listing namunasi
           </a>
@@ -317,84 +452,84 @@
         <div class="panel faq-panel">
           <div class="panel-heading">
             <div>
-              <p class="section-kicker">Savol-javob</p>
-              <h2>Ko'p so'raladigan savollar</h2>
+              <p class="section-kicker" id="faqKicker">Savol-javob</p>
+              <h2 id="faqTitle">Ko'p so'raladigan savollar</h2>
             </div>
           </div>
           <div class="faq-list">
             <details>
-              <summary>Bu 3D print kalkulyatori qanchalik aniq?</summary>
-              <p>
+              <summary id="faqQuestion1">Bu 3D print kalkulyatori qanchalik aniq?</summary>
+              <p id="faqAnswer1">
                 Kalkulyator material, print vaqti, printer ishlashi, elektr, mehnat va
                 qo'shimcha xarajatlarni hisobga oladi. Yakuniy natija slicer sozlamalari,
                 printer kalibrovkasi va real elektr sarfiga qarab biroz farq qilishi mumkin.
               </p>
             </details>
             <details>
-              <summary>3D print umumiy narxiga nimalar ta'sir qiladi?</summary>
-              <p>
+              <summary id="faqQuestion2">3D print umumiy narxiga nimalar ta'sir qiladi?</summary>
+              <p id="faqAnswer2">
                 Asosiy omillar: filament narxi va sarfi, print davomiyligi, elektr sarfi,
                 printer amortizatsiyasi, servis, mehnat, ishlov berish, qadoqlash va
                 qo'shimcha detal xarajatlari.
               </p>
             </details>
             <details>
-              <summary>Filament og'irligini qayerdan bilaman?</summary>
-              <p>
+              <summary id="faqQuestion3">Filament og'irligini qayerdan bilaman?</summary>
+              <p id="faqAnswer3">
                 Ko'p slicerlar, masalan Bambu Studio, PrusaSlicer, Cura va OrcaSlicer,
                 kesishdan keyin taxminiy grammini ko'rsatadi. Eng yaxshi amaliyot shu
                 qiymatdan foydalanishdir.
               </p>
             </details>
             <details>
-              <summary>Nega mehnat xarajatini kiritish kerak?</summary>
-              <p>
+              <summary id="faqQuestion4">Nega mehnat xarajatini kiritish kerak?</summary>
+              <p id="faqAnswer4">
                 Sotuv uchun real narx chiqarmoqchi bo'lsangiz, fayl tayyorlash, printer
                 sozlash, support yechish, tozalash va sifat nazorati uchun ketgan vaqtni
                 hisoblash kerak bo'ladi.
               </p>
             </details>
             <details>
-              <summary>3D print xarajatini qanday kamaytirish mumkin?</summary>
-              <p>
+              <summary id="faqQuestion5">3D print xarajatini qanday kamaytirish mumkin?</summary>
+              <p id="faqAnswer5">
                 Infill, layer height, wall count va orientatsiyani sinab ko'ring. Kichik
                 sozlamalar print vaqtini va material sarfini kamaytirib, sifatni saqlab
                 qolishi mumkin.
               </p>
             </details>
             <details>
-              <summary>1 gramm print narxini qanday hisoblayman?</summary>
-              <p>
+              <summary id="faqQuestion6">1 gramm print narxini qanday hisoblayman?</summary>
+              <p id="faqAnswer6">
                 Oddiy formula: spool narxi / spool vazni. Lekin sotuv uchun bu yetarli
                 emas, chunki elektr, print vaqti, amortizatsiya va mehnat ham qo'shiladi.
               </p>
             </details>
             <details>
-              <summary>Elektr narxi qanday hisoblanadi?</summary>
-              <p>
+              <summary id="faqQuestion7">Elektr narxi qanday hisoblanadi?</summary>
+              <p id="faqAnswer7">
                 Printer quvvati (W), print davomiyligi va kWh narxiga qarab hisoblanadi.
                 Kalkulyator bu uchalasidan avtomatik tarzda elektr xarajatini chiqaradi.
               </p>
             </details>
             <details>
-              <summary>Printer uchun yaxshi soatbay stavka nima?</summary>
-              <p>
+              <summary id="faqQuestion8">Printer uchun yaxshi soatbay stavka nima?</summary>
+              <p id="faqAnswer8">
                 Odatda bu printer narxining xizmat muddatiga bo'lingan qismi, servis
                 xarajati va ehtiyotkor overhead zaxirasidan iborat bo'ladi. Boshlanishiga
                 konservativ qiymatdan foydalanib, keyin real natijalarga qarab aniqlashtiring.
               </p>
             </details>
             <details>
-              <summary>3D printni foyda bilan qanday narxlash kerak?</summary>
-              <p>
+              <summary id="faqQuestion9">3D printni foyda bilan qanday narxlash kerak?</summary>
+              <p id="faqAnswer9">
                 Avval to'liq tannarxni hisoblang, keyin ustiga foyda foizini qo'shing.
                 Tannarx ichiga material, elektr, printer vaqti, mehnat, qadoqlash va risk
                 zaxirasi kirishi kerak.
               </p>
             </details>
             <details>
-              <summary>PLA va PETG dan boshqa materiallar uchun ham ishlatish mumkinmi?</summary>
-              <p>
+              <summary id="faqQuestion10">PLA va PETG dan boshqa materiallar uchun ham ishlatish mumkinmi?</summary>
+              <p id="faqAnswer10">
                 Ha. Kalkulyator defaultda oddiy material presetlari bilan keladi, lekin
                 siz material narxini va boshqa parametrlarni istalgan filament turiga moslab
                 o'zgartirishingiz mumkin.
@@ -405,6 +540,7 @@
       </section>
     </div>
 
+    <script src="./uzum-data.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
